@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+/* BUG DE DESIGN: Header fixo cobrindo o topo da página sem padding no body */
+.top-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/* BUG DE USABILIDADE: Texto cinza super claro no fundo cinza claro */
+.link-menu {
+    color: #e0e0e0;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.texto-apagado {
+    color: #d3d3d3; /* Baixíssimo contraste */
+    font-size: 14px;
+}
+
+.cards-container {
+    display: flex;
+    margin-top: 100px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    width: 500px; /* BUG DE DESIGN: Largura fixa quebra responsividade */
+    margin: 10px;
+    padding: 15px;
+}
+
+/* BUG DE PERFORMANCE E DESIGN: Carrega imagens gigantes sem max-width */
+.img-produto {
+    width: 100%;
+    height: auto;
+}
+
+.btn-comprar {
+    background-color: yellow;
+    color: white; /* BUG DE CONTRASTE: Amarelo com texto branco */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* BUG DE USABILIDADE: Tabela com largura fixa gigantesca */
+.tabela-largura-fixa {
+    width: 1500px;
+    border-collapse: collapse;
+}
+
+.tabela-largura-fixa th, .tabela-largura-fixa td {
+    border: 1px solid #000;
+    padding: 8px;
+}
