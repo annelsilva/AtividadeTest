@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- BUG DE DESIGN: Falta tag viewport para responsividade mobile -->
+    <title>Loja Super Tech - Produtos em Promoção</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BUG DE USABILIDADE: Menu fixo que esconde conteúdo sem contraste -->
+    <header class="top-bar">
+        <h1 class="logo">SUPER TECH</h1>
+        <nav class="menu">
+            <a href="#" class="link-menu">Home</a>
+            <a href="#" class="link-menu">Produtos</a>
+            <a href="#" class="link-menu">Contato</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <h2>Confira nossas ofertas imperdíveis!</h2>
+        
+        <!-- BUG DE USABILIDADE: Texto com péssimo contraste (Cinza claro no branco) -->
+        <p class="texto-apagado">Compre hoje mesmo os melhores produtos com desconto exclusivo para alunos.</p>
+
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <!-- BUG DE PERFORMANCE: Imagem pesada sem tamanho definido -->
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=4000" alt="" class="img-produto">
+                <h3>Notebook Ultra Pro</h3>
+                <p class="preco">R$ 4.999,00</p>
+                <!-- BUG DE ACCESSIBILIDADE/UX: Botão sem texto claro ou link que não funciona -->
+                <button class="btn-comprar" onclick="alert('Erro!')">Clique Aqui</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=4000" alt="" class="img-produto">
+                <h3>Fone Bluetooth Noise Cancelling</h3>
+                <p class="preco">R$ 299,00</p>
+                <!-- BUG DE USABILIDADE: Formulário sem rótulo (label) -->
+                <input type="text" placeholder="Digite seu cupom" class="input-cupom">
+                <a href="javascript:void(0)" class="btn-link">Comprar</a>
+            </div>
+        </div>
+
+        <!-- BUG DE USABILIDADE/DESIGN: Tabela quebrada em telas pequenas -->
+        <section class="tabela-section">
+            <h3>Comparativo de Modelos</h3>
+            <table class="tabela-largura-fixa">
+                <tr>
+                    <th>Modelo</th>
+                    <th>Processador</th>
+                    <th>Memória RAM</th>
+                    <th>Armazenamento</th>
+                    <th>Bateria</th>
+                    <th>Garantia</th>
+                </tr>
+                <tr>
+                    <td>TechPro X1</td>
+                    <td>Intel i7 Gen 13</td>
+                    <td>16GB DDR5</td>
+                    <td>512GB SSD</td>
+                    <td>10 horas continuous heavy usage</td>
+                    <td>24 Meses Nacional</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+    <!-- BUG DE PERFORMANCE: Script blocking no final do body chamando loop pesado -->
+    <script src="script.js"></script>
+</body>
+</html>
