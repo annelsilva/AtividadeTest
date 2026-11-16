@@ -1,76 +1,103 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <!-- BUG DE DESIGN: Falta tag viewport para responsividade mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confira ofertas imperdíveis de notebooks e acessórios na Loja Super Tech.">
     <title>Loja Super Tech - Produtos em Promoção</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- BUG DE USABILIDADE: Menu fixo que esconde conteúdo sem contraste -->
     <header class="top-bar">
-        <h1 class="logo">SUPER TECH</h1>
-        <nav class="menu">
-            <a href="#" class="link-menu">Home</a>
-            <a href="#" class="link-menu">Produtos</a>
-            <a href="#" class="link-menu">Contato</a>
-        </nav>
+        <div class="header-container">
+            <a href="#" class="logo">SUPER TECH</a>
+            <nav class="menu" aria-label="Navegação principal">
+                <a href="#" class="link-menu">Home</a>
+                <a href="#produtos" class="link-menu">Produtos</a>
+                <a href="#comparativo" class="link-menu">Comparativo</a>
+                <a href="#contato" class="link-menu">Contato</a>
+            </nav>
+        </div>
     </header>
 
     <main class="content">
-        <h2>Confira nossas ofertas imperdíveis!</h2>
-        
-        <!-- BUG DE USABILIDADE: Texto com péssimo contraste (Cinza claro no branco) -->
-        <p class="texto-apagado">Compre hoje mesmo os melhores produtos com desconto exclusivo para alunos.</p>
+        <section class="hero">
+            <h1>Confira nossas ofertas imperdíveis!</h1>
+            <p class="subtitulo">Compre hoje mesmo os melhores produtos com desconto exclusivo para alunos.</p>
+        </section>
 
-        <div class="cards-container">
+        <section id="produtos" class="cards-container" aria-label="Produtos em destaque">
             <!-- Card 1 -->
-            <div class="card">
-                <!-- BUG DE PERFORMANCE: Imagem pesada sem tamanho definido -->
-                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=4000" alt="" class="img-produto">
-                <h3>Notebook Ultra Pro</h3>
-                <p class="preco">R$ 4.999,00</p>
-                <!-- BUG DE ACCESSIBILIDADE/UX: Botão sem texto claro ou link que não funciona -->
-                <button class="btn-comprar" onclick="alert('Erro!')">Clique Aqui</button>
-            </div>
+            <article class="card">
+                <img 
+                    src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop" 
+                    alt="Notebook Ultra Pro aberto sobre uma mesa" 
+                    width="800" 
+                    height="533" 
+                    loading="lazy" 
+                    class="img-produto"
+                >
+                <div class="card-body">
+                    <h2>Notebook Ultra Pro</h2>
+                    <p class="preco">R$ 4.999,00</p>
+                    <button type="button" class="btn-comprar">Comprar Notebook</button>
+                </div>
+            </article>
 
             <!-- Card 2 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=4000" alt="" class="img-produto">
-                <h3>Fone Bluetooth Noise Cancelling</h3>
-                <p class="preco">R$ 299,00</p>
-                <!-- BUG DE USABILIDADE: Formulário sem rótulo (label) -->
-                <input type="text" placeholder="Digite seu cupom" class="input-cupom">
-                <a href="javascript:void(0)" class="btn-link">Comprar</a>
-            </div>
-        </div>
+            <article class="card">
+                <img 
+                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" 
+                    alt="Fone de ouvido Bluetooth preto com cancelamento de ruído" 
+                    width="800" 
+                    height="533" 
+                    loading="lazy" 
+                    class="img-produto"
+                >
+                <div class="card-body">
+                    <h2>Fone Bluetooth Noise Cancelling</h2>
+                    <p class="preco">R$ 299,00</p>
+                    
+                    <div class="cupom-group">
+                        <label for="cupom-fone" class="label-cupom">Cupom de desconto:</label>
+                        <input type="text" id="cupom-fone" name="cupom" placeholder="Ex: ALUNO10" class="input-cupom">
+                    </div>
 
-        <!-- BUG DE USABILIDADE/DESIGN: Tabela quebrada em telas pequenas -->
-        <section class="tabela-section">
-            <h3>Comparativo de Modelos</h3>
-            <table class="tabela-largura-fixa">
-                <tr>
-                    <th>Modelo</th>
-                    <th>Processador</th>
-                    <th>Memória RAM</th>
-                    <th>Armazenamento</th>
-                    <th>Bateria</th>
-                    <th>Garantia</th>
-                </tr>
-                <tr>
-                    <td>TechPro X1</td>
-                    <td>Intel i7 Gen 13</td>
-                    <td>16GB DDR5</td>
-                    <td>512GB SSD</td>
-                    <td>10 horas continuous heavy usage</td>
-                    <td>24 Meses Nacional</td>
-                </tr>
-            </table>
+                    <button type="button" class="btn-comprar">Comprar Fone</button>
+                </div>
+            </article>
+        </section>
+
+        <section id="comparativo" class="tabela-section">
+            <h2>Comparativo de Modelos</h2>
+            <div class="table-wrapper">
+                <table class="tabela-comparativa">
+                    <thead>
+                        <tr>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Processador</th>
+                            <th scope="col">Memória RAM</th>
+                            <th scope="col">Armazenamento</th>
+                            <th scope="col">Bateria</th>
+                            <th scope="col">Garantia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TechPro X1</td>
+                            <td>Intel i7 Gen 13</td>
+                            <td>16GB DDR5</td>
+                            <td>512GB SSD</td>
+                            <td>10 horas de uso contínuo</td>
+                            <td>24 Meses Nacional</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 
-    <!-- BUG DE PERFORMANCE: Script blocking no final do body chamando loop pesado -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
