@@ -1,66 +1,252 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset básico e configurações globais */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
 }
 
-/* BUG DE DESIGN: Header fixo cobrindo o topo da página sem padding no body */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* Header fixo sem cobrir o conteúdo (sticky) e com alto contraste */
 .top-bar {
-    position: fixed;
+    position: sticky;
     top: 0;
-    width: 100%;
-    background-color: #f1f1f1;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-/* BUG DE USABILIDADE: Texto cinza super claro no fundo cinza claro */
-.link-menu {
-    color: #e0e0e0;
+.logo {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #2563eb;
     text-decoration: none;
-    margin-right: 15px;
+    letter-spacing: -0.5px;
 }
 
-.texto-apagado {
-    color: #d3d3d3; /* Baixíssimo contraste */
-    font-size: 14px;
-}
-
-.cards-container {
+.menu {
     display: flex;
-    margin-top: 100px;
+    gap: 1.5rem;
+}
+
+.link-menu {
+    color: #334155;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.link-menu:hover,
+.link-menu:focus-visible {
+    color: #2563eb;
+}
+
+/* Container principal */
+.content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+}
+
+/* Evita que os links âncora fiquem escondidos atrás do menu ao clicar */
+section {
+    scroll-margin-top: 90px;
+}
+
+/* Seção de destaque (Hero) */
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+/* Contraste corrigido para leitura confortável */
+.subtitulo {
+    color: #475569;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid responsivo de produtos (substitui a largura fixa de 500px) */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
 }
 
 .card {
-    border: 1px solid #ccc;
-    width: 500px; /* BUG DE DESIGN: Largura fixa quebra responsividade */
-    margin: 10px;
-    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* BUG DE PERFORMANCE E DESIGN: Carrega imagens gigantes sem max-width */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
+}
+
 .img-produto {
     width: 100%;
-    height: auto;
+    height: 230px;
+    object-fit: cover;
+    display: block;
 }
 
+.card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-body h2 {
+    font-size: 1.25rem;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.preco {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 1.25rem;
+}
+
+/* Campo de cupom */
+.cupom-group {
+    margin-bottom: 1.25rem;
+}
+
+.label-cupom {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.35rem;
+}
+
+.input-cupom {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-cupom:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Botão com alto contraste (azul vibrante + texto branco) */
 .btn-comprar {
-    background-color: yellow;
-    color: white; /* BUG DE CONTRASTE: Amarelo com texto branco */
+    margin-top: auto;
+    width: 100%;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
     border: none;
-    padding: 10px 20px;
+    border-radius: 8px;
+    padding: 0.85rem 1.25rem;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-/* BUG DE USABILIDADE: Tabela com largura fixa gigantesca */
-.tabela-largura-fixa {
-    width: 1500px;
+.btn-comprar:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-comprar:active {
+    transform: scale(0.99);
+}
+
+.btn-comprar:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* Tabela responsiva */
+.tabela-section h2 {
+    font-size: 1.5rem;
+    color: #0f172a;
+    margin-bottom: 1.25rem;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.tabela-comparativa {
+    width: 100%;
+    min-width: 650px;
     border-collapse: collapse;
+    text-align: left;
 }
 
-.tabela-largura-fixa th, .tabela-largura-fixa td {
-    border: 1px solid #000;
-    padding: 8px;
+.tabela-comparativa th,
+.tabela-comparativa td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabela-comparativa th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.tabela-comparativa tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-comparativa tbody tr:hover {
+    background-color: #f8fafc;
 }
